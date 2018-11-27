@@ -48,18 +48,46 @@ byte upArrow[8] = { //TODO käytettäväksi myöhemmin
   0b00100, //   *
   0b00100  //   *
 };
+int cursorPosition = 0;
 int menuRow = 0; // valikkorivimuuttuja
 menuElement *menu=Menu1;
 
 void setup(){
+int VIIVE=60;
+for(int i=0; i<5; i++){
+          pinMode(D0,OUTPUT);
+          digitalWrite(D0, HIGH);
+          delay(VIIVE);
+          digitalWrite(D0, LOW);
+          pinMode(D1,OUTPUT);
+          digitalWrite(D1, HIGH);
+          delay(VIIVE);
+          digitalWrite(D1, LOW);
+          pinMode(D2,OUTPUT);
+          digitalWrite(D2, HIGH);
+          delay(VIIVE);
+          digitalWrite(D2, LOW);
+          pinMode(D3,OUTPUT);
+          digitalWrite(D3, HIGH);
+          delay(VIIVE);
+          digitalWrite(D3, LOW);
+          digitalWrite(D2,HIGH);
+          delay(VIIVE);
+          digitalWrite(D2, LOW);
+          digitalWrite(D1, HIGH);
+          delay(VIIVE);
+          digitalWrite(D1, LOW);
+          lcd.setCursor(1,1);
+          lcd.print("DELAY!!! ");
+}
   lcd.clear();
   lcd.begin(16, 2);
   lcd.createChar(0, menuCursor);
   lcd.createChar(1, downArrow);
   lcd.createChar(2, upArrow);
   //Serial.begin(9600);
-  menu[0].mL(menuRow);
-  menu[1].mL(menuRow);
+  menu[menuRow+0].mL(0);
+  menu[menuRow+1].mL(1);
 }
 
 void loop(){  
@@ -72,22 +100,44 @@ menuControl();
 void menuControl(){
 switch(buttons()){
   
-  case 1: // laskee rivin arvoa
-  menuRow--;
+  case 1: // laskee arvoa
+  if(menuRow > 0){
+  menuRow--;}
+  lcd.clear();
+  menu[menuRow+0].mL(0);
+  menu[menuRow+1].mL(1);
   break;
+  
   case 2: // Valitsee valikon kursorin osoittaman rivin mukaan, putsaa näytön ja piirtää valitusta seuraavan valikon
   lcd.clear();
-  menu=menu[menuRow].t;
-  menu[0].mL(menuRow);
-  menu[1].mL(menuRow);
+  menu=menu[menuRow].t;//Valikkorakenne toisesta taulukosta
+  menu[menuRow+0].mL(0);
+  menu[menuRow+1].mL(1);
+  menuRow = 0;
   break;
-  case 3: // kasvattaa rivin arvoa
+  
+  case 3: // kasvattaa arvoa
   menuRow++;
+  lcd.clear();
+  if(menu[menuRow].t != NULL){
+    menu[menuRow+0].mL(0);
+  }else{
+    menuRow--;
+  }
+  if(menu[menuRow+1].t != NULL){
+    menu[menuRow+1].mL(1);
+  }else{
+    menu[0].mL(1);
+  }
   break;
+  
   case 4: // TODO jos painiketta S1 painettu pitkään tapahtuu jotain hienoa
+  
   break;
   case 5: // TODO jos painiketta S3 painettu pitkään tapahtuu jotain hienoa
+  
   break;
+  
   case 6: // jos valintapainiketta painettu pitkään, palaa ensimmäiseen valikkoon
   lcd.clear();
   menuElement *menu=Menu1;
@@ -95,35 +145,35 @@ switch(buttons()){
   menu[1].mL(menuRow);
   menu=menu[menuRow].t;
   break;
-} drawCursor();
+  
+} 
+//drawCursor();
 }
-
 /*
  * muuttuja funktio joka painikkeiden mukaan palauttaa halutun arvon käytettäväksi menuControl funktiossa
  */
 int buttons(){
 int ret=0;
-  if (S1.pressed()&&menuRow==1){ ret = 1; } // jos painiketta S1 painettu ja valikkorivi on yksi, palauttaa arvon 1 menuControl funktioon
+  if (S1.pressed() ){ ret = 1; } // jos painiketta S1 painettu ja valikkorivi on yksi, palauttaa arvon 1 menuControl funktioon
   if (S1.pressedLong()){ ret = 4; } // TODO jos painiketta S1 painettu pitkään tapahtuu jotain hienoa
-  if (S3.pressed()&&menuRow==0){ ret = 3; } // jos painiketta S3 painettu ja valikkorivi on nolla, palauttaa arvon 3 menuControl funktioon
+  if (S3.pressed() ){ ret = 3; } // jos painiketta S3 painettu ja valikkorivi on nolla, palauttaa arvon 3 menuControl funktioon
   if (S3.pressedLong()){ ret = 5; } // TODO jos painiketta S3 painettu pitkään tapahtuu jotain hienoa
   if (S2.pressed()){ ret = 2; } // jos painiketta S2 painetaan palauttaa arvon kaksi menuControl funktioon
   if (S2.pressedLong()){ ret = 6; } // jos paineketta S2 painetaan pitkään palauttaa arvon kuusi menuControl funktioon
  return ret;  
- drawCursor();
 } 
 
 /*
  * funktio joka piirtää kursorin
  */
 void drawCursor() {
-    if (menuRow  == 0) { //jos valikkorivi on yhtäkuin nolla,
+    if (cursorPosition) { //jos valikkorivi on yhtäkuin nolla,
       lcd.setCursor(0, 0);
       lcd.write(byte(0)); //piirtää kursorin riville nolla
       lcd.setCursor(0,1);
       lcd.print(" "); //ja pyyhkii rivin yksi
     }
-    if (menuRow == 1) {  //jos valikkorivi on yhtäkuin yksi, 
+    if (cursorPosition) {  //jos valikkorivi on yhtäkuin yksi, 
       lcd.setCursor(0,0);
       lcd.print(" "); //  pyyhkii kursorin riviltä nolla
       lcd.setCursor(0, 1);
