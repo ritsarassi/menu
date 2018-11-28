@@ -1,26 +1,21 @@
 #ifndef menuElement_h
 #define menuElement_h
-#include <LiquidCrystal.h>
-#include "Button.h"
-/*
- * Shieldin pinnimääritelmät
- */
-#define D0 3
-#define D1 4
-#define D2 5
-#define D3 6
-#define LCDLight 13
+#include <LiquidCrystal.h> //liitetään LCD näytön kirjastot
+#include "Button.h" // liitetään painikkeiden kirjastot
 
+#define D0 3        //
+#define D1 4        // Shieldin 
+#define D2 5        // pinnimääritelmät
+#define D3 6        //
+#define LCDLight 13 //
 
 //funktio-osoitin
 typedef void (* menuLine)(int);
 struct menuElement{
-  menuLine mL;
-  struct menuElement* t;
+  menuLine mL; //Osoitin funktioon joka rakentaa rivin sisällön
+  struct menuElement* t; //Osoitin taulukkoon joka muodostaa seuraavan valikon
 };
-
 extern LiquidCrystal lcd;
-
 /*
  * Menu1
  */
@@ -32,7 +27,6 @@ extern menuElement mEmenu1line1;
 extern menuElement mEmenu1line2;
 //Valikko Menu1
 extern menuElement Menu1[];
-
 /*
  * Menu21
  */
@@ -44,7 +38,6 @@ extern menuElement mEmenu21line1;
 extern menuElement mEmenu21line2;
 //Taulukko riveistä > eli valikko
 extern menuElement Menu21[];
-
 /*
  * Menu22
  */
@@ -56,18 +49,8 @@ extern menuElement mEmenu22line1;
 extern menuElement mEmenu22line2;
 //Taulukko riveistä > eli valikko
 extern menuElement Menu22[];
-
-
 /*
- * Back to main menu
- */
-//Rivin tulostus-funktiot
-void backToMenu1(int row);
-//Rivien tiedot
-extern menuElement mEbackToMenu1;
-
-/*
- * Analogread menus
+ * Analog pinnien valikko
  */
  //Taulukko riveistä > eli valikko
 extern menuElement MenuA0[];
@@ -96,71 +79,26 @@ extern menuElement MenuA3[];
 void menuA3(int row);
 //Rivien tiedot
 extern menuElement mEmenuA3;
-
 /*
- * digital write menu
+ * Digital pinnien valikko
  */
-extern menuElement MenuDigital[]; 
+extern menuElement MenuDigitalPinsLow[]; 
  //Taulukko riveistä > eli valikko
-extern menuElement MenuD0Low[];
+extern menuElement MenuDigitalPinsLow[];
 //Rivin tulostus-funktiot
-void menuD0Low(int row);
+void menuDigitalPinsLow(int row);
 //Rivien tiedot
-extern menuElement mEmenuD0Low;
+extern menuElement mEmenuDigitalPinsLow;
 
 //Taulukko riveistä > eli valikko
-extern menuElement MenuD0High[];
+extern menuElement MenuDigitalPinsHigh[];
 //Rivin tulostus-funktiot
-void menuD0High(int row);
+void menuDigitalPinsHigh(int row);
 //Rivien tiedot
-extern menuElement mEmenuD0High;
-
-//Taulukko riveistä > eli valikko
-extern menuElement MenuD1Low[];
-//Rivin tulostus-funktiot
-void menuD1Low(int row);
-//Rivien tiedot
-extern menuElement mEmenuD1Low;
-
-//Taulukko riveistä > eli valikko
-extern menuElement MenuD1High[];
-//Rivin tulostus-funktiot
-void menuD1High(int row);
-//Rivien tiedot
-extern menuElement mEmenuD1High;
-
-//Taulukko riveistä > eli valikko
-extern menuElement MenuD2Low[];
-//Rivin tulostus-funktiot
-void menuD2Low(int row);
-//Rivien tiedot
-extern menuElement mEmenuD2Low;
-
-//Taulukko riveistä > eli valikko
-extern menuElement MenuD2High[];
-//Rivin tulostus-funktiot
-void menuD2High(int row);
-//Rivien tiedot
-extern menuElement mEmenuD2High;
-
-//Taulukko riveistä > eli valikko
-extern menuElement MenuD3Low[];
-//Rivin tulostus-funktiot
-void menuD3Low(int row);
-//Rivien tiedot
-extern menuElement mEmenuD3Low;
-
-//Taulukko riveistä > eli valikko
-extern menuElement MenuD3High[];
-//Rivin tulostus-funktiot
-void menuD3High(int row);
-//Rivien tiedot
-extern menuElement mEmenuD3High;
-
+extern menuElement mEmenuDigitalPinsHigh;
 /*
- * LCDbacklight menu
+ * LCDbacklight valikko
  */
-
  //Taulukko riveistä > eli valikko
 extern menuElement MenubackLightOff[];
 //Rivin tulostus-funktiot
@@ -174,9 +112,8 @@ extern menuElement MenubackLightOn[];
 void menubackLightOn(int row);
 //Rivien tiedot
 extern menuElement mEmenubackLightOn;
-
 /*
- * Ritari ässä menu
+ * Ritari ässä valikko
  */
  //Taulukko riveistä > eli valikko
 extern menuElement MenuRitari1[];
@@ -191,4 +128,25 @@ extern menuElement MenuRitari2[];
 void menuRitari2(int row);
 //Rivien tiedot
 extern menuElement mEmenuRitari2;
+/*
+ * Takaisin menu21
+ */
+//Rivin tulostus-funktiot
+void backToMenu21(int row);
+//Rivien tiedot
+extern menuElement mEbackToMenu21;
+/*
+ * Takaisin menu22
+ */
+//Rivin tulostus-funktiot
+void backToMenu22(int row);
+//Rivien tiedot
+extern menuElement mEbackToMenu22;
+/*
+ * Takaisin alkuvalikkoon
+ */
+//Rivin tulostus-funktiot
+void backToMenu1(int row);
+//Rivien tiedot
+extern menuElement mEbackToMenu1;
 #endif

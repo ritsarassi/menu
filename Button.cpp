@@ -33,7 +33,9 @@ bool Button::pressed()
   _prevState=x;
   return ret;
 } 
-
+/* Funktio kertoo kahden sekunnin välein painikkeen
+ * pohjassapidosta
+ */
 bool Button::pressedLong(){
   bool ret=0;
   int x=digitalRead(_pin);
