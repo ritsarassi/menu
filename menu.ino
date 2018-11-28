@@ -50,8 +50,9 @@ byte upArrow[8] = { //Varaus käytettäväksi myöhemmin
   0b00100, //   *
   0b00100  //   *
 };
-int menuRow = 0; // valikkorivimuuttuja
-menuElement *menu=Menu1;
+int cursorPosition = 0; //kursorimuuttuja
+int menuRow = 0; // valikkorivimuuttuja 
+menuElement *menu=Menu1; 
 
 void setup(){
   lcd.clear();
@@ -73,7 +74,12 @@ void menuControl(){
 switch(buttons()){
   
   case 1: // laskee rivin arvoa jos menuRow suurempi kuin nolla jotta ei laske alle nollan
-  if(menuRow > 0){
+  if(cursorPosition > 0)
+  {
+  cursorPosition--;
+  }
+  if(menuRow > 0)
+  {
   menuRow--;
   }
   break;
@@ -83,21 +89,28 @@ switch(buttons()){
   menu[0].mL(menuRow);  // piirtää uuden rivin paikalle rivi 0
   menu[1].mL(menuRow);  // piirtää uuden rivin paikalle rivi 1
   menuRow = 0;          // palauttaa menuRow arvon nollille
+  cursorPosition = 0;   // palauttaa kursorin arvon
   break;
   case 3: // kasvattaa rivin arvoa
+  if(cursorPosition < 1)
+  {
+  cursorPosition++;
+  }
   menuRow++;
   break;
   case 4: // varaus käytettäväksi jos painiketta S1 painettu pitkään tapahtuu jotain hienoa
   break;
   case 5: // varaus käytettäväksi jos painiketta S3 painettu pitkään tapahtuu jotain hienoa
   break;
-  case 6: // jos valintapainiketta painettu pitkään, palaa ensimmäiseen valikkoon
-  lcd.clear();              
-  menuElement *menu=Menu1;
+  case 6: // jos valintapainiketta painettu pitkään, tyhjentää näytön ja palaa ensimmäiseen valikkoon
+  lcd.clear();   
+  menuRow=0;
+  cursorPosition = 0;           
+  menu=Menu1;
   menu[0].mL(menuRow);
   menu[1].mL(menuRow);
   break;
-} drawCursor();       // kutsuu funktiota joka piirtää kursorin
+} drawCursor(); // kutsuu funktiota joka piirtää kursorin
 }
 
 /*
@@ -105,9 +118,9 @@ switch(buttons()){
  */
 int buttons(){
 int ret=0; //vakioarvo on nolla
-  if (S1.pressed()&&menuRow==1){ ret = 1; } // jos painiketta S1 painettu ja valikkorivi on yksi, palauttaa arvon 1 menuControl funktioon
+  if (S1.pressed()){ ret = 1; } // jos painiketta S1 painettu ja valikkorivi on yksi, palauttaa arvon 1 menuControl funktioon
   if (S1.pressedLong()){ ret = 4; } // varaus käytettäväksi jos painiketta S1 painettu pitkään tapahtuu jotain hienoa
-  if (S3.pressed()&&menuRow==0){ ret = 3; } // jos painiketta S3 painettu ja valikkorivi on nolla, palauttaa arvon 3 menuControl funktioon
+  if (S3.pressed()){ ret = 3; } // jos painiketta S3 painettu ja valikkorivi on nolla, palauttaa arvon 3 menuControl funktioon
   if (S3.pressedLong()){ ret = 5; } // varaus käytettäväksi jos painiketta S3 painettu pitkään tapahtuu jotain hienoa
   if (S2.pressed()){ ret = 2; } // jos painiketta S2 painetaan palauttaa arvon kaksi menuControl funktioon
   if (S2.pressedLong()){ ret = 6; } // jos paineketta S2 painetaan pitkään palauttaa arvon kuusi menuControl funktioon
@@ -117,13 +130,13 @@ int ret=0; //vakioarvo on nolla
  * funktio joka piirtää kursorin
  */
 void drawCursor() {
-    if (menuRow  == 0) { //jos valikkorivi on yhtäkuin nolla,
+    if (cursorPosition == 0) { //jos valikkorivi on yhtäkuin nolla,
       lcd.setCursor(0, 0);
       lcd.write(byte(0)); //piirtää kursorin riville nolla
       lcd.setCursor(0,1);
       lcd.print(" "); //ja pyyhkii rivin yksi
     }
-    if (menuRow == 1) {  //jos valikkorivi on yhtäkuin yksi, 
+    if (cursorPosition == 1) {  //jos valikkorivi on yhtäkuin yksi, 
       lcd.setCursor(0,0);
       lcd.print(" "); //  pyyhkii kursorin riviltä nolla
       lcd.setCursor(0, 1);
