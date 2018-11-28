@@ -143,3 +143,4 @@ void drawCursor() {
       lcd.write(byte(0)); // ja piirtää kursorin riville yksi
     }
 }
+//Tehnyt Marko Saari 2018

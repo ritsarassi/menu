@@ -16,37 +16,38 @@ struct menuElement{
   struct menuElement* t; //Osoitin taulukkoon joka muodostaa seuraavan valikon
 };
 extern LiquidCrystal lcd;
+
 /*
  * Menu1
  */
 //Rivin tulostus-funktiot
-void menu1line1(int row);
-void menu1line2(int row);
+void menu1rivi1(int row);
+void menu1rivi2(int row);
 //Rivien tiedot
-extern menuElement mEmenu1line1;
-extern menuElement mEmenu1line2;
+extern menuElement mEmenu1rivi1;
+extern menuElement mEmenu1rivi2;
 //Valikko Menu1
 extern menuElement Menu1[];
 /*
  * Menu21
  */
 //Rivin tulostus-funktiot
-void menu21line1(int row);
-void menu21line2(int row);
+void menu21rivi1(int row);
+void menu21rivi2(int row);
 //Rivien tiedot
-extern menuElement mEmenu21line1;
-extern menuElement mEmenu21line2;
+extern menuElement mEmenu21rivi1;
+extern menuElement mEmenu21rivi2;
 //Taulukko riveistä > eli valikko
 extern menuElement Menu21[];
 /*
  * Menu22
  */
 //Rivin tulostus-funktiot
-void menu22line1(int row);
-void menu22line2(int row);
+void menu22rivi1(int row);
+void menu22rivi2(int row);
 //Rivien tiedot
-extern menuElement mEmenu22line1;
-extern menuElement mEmenu22line2;
+extern menuElement mEmenu22rivi1;
+extern menuElement mEmenu22rivi2;
 //Taulukko riveistä > eli valikko
 extern menuElement Menu22[];
 /*
@@ -150,3 +151,4 @@ void backToMenu1(int row);
 //Rivien tiedot
 extern menuElement mEbackToMenu1;
 #endif
+//Tehnyt Marko Saari 2018
