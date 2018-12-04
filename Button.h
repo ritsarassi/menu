@@ -1,5 +1,5 @@
 /*
-Button.h - painike kirjasto
+Button.h - library for buttons
 */
 
 #ifndef Button_h
@@ -7,7 +7,7 @@ Button.h - painike kirjasto
 #include "Arduino.h"
 
 const int BUTTONPRESSED=LOW;
-const int BOUNCE=20;
+const int BOUNCE=50;
 
 /*
 Luodaan luokka joka muodostuu metodeista painikkeen käsittelyä varten,
@@ -32,4 +32,3 @@ class Button
 };
 
 #endif
-//Tehnyt Marko Saari 2018
