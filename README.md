@@ -1,6 +1,5 @@
 # menu 
-kahden rivin valikko jossa laajennus mahdollisuus, 
-käyttäen struktuureja sekä kirjastoja
+
 
 Toiminta: 
 painike S1 siirtää kursoria ylös
