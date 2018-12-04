@@ -10,4 +10,5 @@ Quantity	Value	Package	Order code	Manufacturer	Manuf. Code	Availability	Price (f
 1	10k	B25P	unknown					
 3	MOMENTARY-SWITCH-SPST-PTH-6.0MM	TACTILE_SWITCH_PTH_6.0MM	unknown					
 4	2N2222	TO92-EBC-OVAL	unknown					
-1	ARDUINO-NOHOLE	ARDUINO-NOHOLE	unknown					
+1	ARDUINO-NOHOLE	ARDUINO-NOHOLE	unknown				
+
