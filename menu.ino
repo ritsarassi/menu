@@ -60,7 +60,7 @@ byte leftArrow[8] = { // kursori vasen
 };
 
 int menuRow = 0; // valikkorivimuuttuja
-menuElement *menu=Menu1;
+menuElement *menu=Menu1; 
 
 void setup(){
   pinMode(LCDLight, OUTPUT); // asettaa pinnin LCDLight output
