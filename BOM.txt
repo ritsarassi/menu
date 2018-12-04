@@ -1,0 +1,13 @@
+Order list for C:/Users/marko/Documents/EAGLE/projects/shield/shield.sch
+Exported from EAGLE with DesignLink
+
+Quantity	Value	Package	Order code	Manufacturer	Manuf. Code	Availability	Price (from)	Description
+8		10X02MTA	unknown					
+1	LCD-16X2NOHOLES	LCD-16X2_NOHOLESNOSILK	unknown					
+1	180	0207/10	2059213	PANASONIC ELECTRONIC COMPONENTS	ERJ2GEJ181X	586591	0.0077	PANASONIC ELECTRONIC COMPONENTS - ERJ2GEJ181X - RES, 180R, 5%, 0.1W, 0402, THICK FILM
+4	3k9	0207/10	unknown					
+4	1k	0207/10	unknown					
+1	10k	B25P	unknown					
+3	MOMENTARY-SWITCH-SPST-PTH-6.0MM	TACTILE_SWITCH_PTH_6.0MM	unknown					
+4	2N2222	TO92-EBC-OVAL	unknown					
+1	ARDUINO-NOHOLE	ARDUINO-NOHOLE	unknown					
