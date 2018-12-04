@@ -16,7 +16,7 @@ Button::Button(int pin)
   _prevState=digitalRead(pin); //Luetaan painikkeen tila ensimmäistä vertailua varten
   //Aikaleiman nollaus
   _timeStamp = 0;
-  _keepTime = 2000;
+  _keepTime = 2000; // kaksi sekuntia
 }
 
 
@@ -33,9 +33,7 @@ bool Button::pressed()
   _prevState=x;
   return ret;
 } 
-/* Funktio kertoo kahden sekunnin välein painikkeen
- * pohjassapidosta
- */
+
 bool Button::pressedLong(){
   bool ret=0;
   int x=digitalRead(_pin);

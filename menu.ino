@@ -63,14 +63,14 @@ int menuRow = 0; // valikkorivimuuttuja
 menuElement *menu=Menu1;
 
 void setup(){
-  pinMode(LCDLight, OUTPUT);
-  digitalWrite(LCDLight, HIGH);
-  lcd.clear();
-  lcd.begin(16, 2);
-  lcd.createChar(0, rightArrow);
-  lcd.createChar(1, downArrow);
-  lcd.createChar(2, upArrow);
-  lcd.createChar(3, leftArrow);
+  pinMode(LCDLight, OUTPUT); // asettaa pinnin LCDLight output
+  digitalWrite(LCDLight, HIGH); // asettaa pinnille virran
+  lcd.begin(16, 2); // käynnistää näytön, merkki paikkojen määrät 16 ja rivit 2
+  lcd.createChar(0, rightArrow); // Luo merkin paikalle 0, nuoli oikealle
+  lcd.createChar(1, downArrow); // Luo merkin paikalle 1, nuoli alas
+  lcd.createChar(2, upArrow); // Luo merkin paikalle 2, nuoli ylös
+  lcd.createChar(3, leftArrow); // Luo merkin paikalle 3, nuoli vasemmalle
+  // piirtää ensimmäisen valikon
   menu[menuRow+0].mL(0);
   menu[menuRow+1].mL(1);
 }
@@ -94,25 +94,25 @@ void menuControl(){
   menu[menuRow+1].mL(1);
   break;
   case 2: // Valitsee valikon kursorin osoittaman rivin mukaan, putsaa näytön ja piirtää valitusta seuraavan valikon
-  if (menu=menu[menuRow].t){//Valikkorakenne toisesta taulukosta
+  menu=menu[menuRow].t; //Valikkorakenne toisesta taulukosta
   lcd.clear(); // pyyhkii näytön
   menuRow=0;  //nollaa rivit
   //piirtää uudet rivit
   menu[menuRow+0].mL(0); 
   menu[menuRow+1].mL(1);
-  }
+  
   break;
   case 3: 
   lcd.clear(); // pyyhkii näytön
   menuRow++; // kasvattaa arvoa
-  if(menu[menuRow].t != NULL){
-    menu[menuRow+0].mL(0);
-  }else{
-    menuRow--;
+  if(menu[menuRow].t != NULL){ //jos ei ole tyhjä 
+    menu[menuRow+0].mL(0); //ei kasvata arvoa riville 0
+  }else{ // muutoin laskee arvoa
+    menuRow--; // jos halutaan pyörähtämään ympäri, vaihdetaan kasvattamaan arvoa
   }
-  if(menu[menuRow+1].t != NULL){
-    menu[menuRow+1].mL(1);
-  }else{
+  if(menu[menuRow+1].t != NULL){ //jos seuraava rivi ei ole tyhjä,
+    menu[menuRow+1].mL(1); // kasvattaa rivien arvoa ja piirtää seuraavaan
+  }else{ // muutoin ei kasvata arvoa, pysähtyy tyhjään riviin, alanuoli katoaa
     menu[menuRow+0].mL(0);
 }
   break;
@@ -135,14 +135,14 @@ drawCursor(); //piirtää kursorin
  * muuttuja funktio joka painikkeiden mukaan palauttaa halutun arvon käytettäväksi menuControl funktiossa
  */
 int buttons(){
-int ret=0;
+int ret=0; // oletusarvo nolla
   if (S1.pressed() ){ ret = 1; } // jos painiketta S1 painettu ja valikkorivi on yksi, palauttaa arvon 1 menuControl funktioon
   if (S1.pressedLong()){ ret = 4; } // TODO jos painiketta S1 painettu pitkään tapahtuu jotain hienoa
   if (S3.pressed() ){ ret = 3; } // jos painiketta S3 painettu ja valikkorivi on nolla, palauttaa arvon 3 menuControl funktioon
   if (S3.pressedLong()){ ret = 5; } // TODO jos painiketta S3 painettu pitkään tapahtuu jotain hienoa
   if (S2.pressed()){ ret = 2; } // jos painiketta S2 painetaan palauttaa arvon kaksi menuControl funktioon
   if (S2.pressedLong()){ ret = 6; } // jos paineketta S2 painetaan pitkään palauttaa arvon kuusi menuControl funktioon
- return ret;  
+ return ret;  // palauttaa oletusarvon
 } 
 /*
  * funktio joka piirtää kursorin

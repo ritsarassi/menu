@@ -76,7 +76,7 @@ menuElement mEmenu21rivi1{
   &menu21rivi1,
   MenuA0
 };
-//Valikko MenuA0
+// Esimerkkisisältö Valikko MenuA0, painattaessa vaihtaa analog pinnin lukemaan seuraavaa A0->A1->A2->A3->A0 jne
 menuElement MenuA0[]={
   mEmenuA0,
   mEbackToMenu21,
@@ -166,7 +166,7 @@ menuElement mEmenu21rivi2{
   &menu21rivi2,
   MenubackLightOff
 };
-//Valikko MenubackLightOff
+//Esimerkki sisältö Valikko MenubackLightOff, painattaessa sytyttää/sammuttaa taustavalon
 menuElement MenubackLightOff[]={
   mEmenubackLightOff,
   mEbackToMenu21,

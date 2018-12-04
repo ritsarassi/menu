@@ -86,7 +86,7 @@ extern menuElement mEmenu24rivi2;
 extern menuElement Menu24[];
 
 /*
- * Analog valikko
+ * Analog esimerkki valikko
  */
  //Taulukko riveistä > eli valikko
 extern menuElement MenuA0[];
@@ -116,7 +116,7 @@ void menuA3(int row);
 //Rivien tiedot
 extern menuElement mEmenuA3;
 /*
- * LCDbacklight menu
+ * LCDtaustavalo menu
  */
  //Taulukko riveistä > eli valikko
 extern menuElement MenubackLightOff[];
