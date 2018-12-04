@@ -3,148 +3,84 @@
 /*
  * Menu1
  */
-
-menuElement mENULL{
-  NULL
-};
-
 //Valikko Menu1
 menuElement Menu1[]={
-  mEmenu1line1,
-  mEmenu1line2,
-  mEmenu1line3,
-  mEmenu1line4,
+  mEmenu1rivi1,
+  mEmenu1rivi2,
+  mEmenu1rivi3,
+  mEmenu1rivi4,
   mENULL
 }; 
+// Tyhjä valikko rivi pysäyttämään
+menuElement mENULL{
+  NULL,
+  NULL
+};
 //Funktio joka piirtää yhden rivin valikkoon
-void menu1line1(int row){
+void menu1rivi1(int row){
   lcd.setCursor(1,row);
-  lcd.print("Menu 1 Line 1 param: ");
+  lcd.print("Menu 1 rivi 1 ");
 }
 //struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenu1line1{
-  &menu1line1,
+menuElement mEmenu1rivi1{
+  &menu1rivi1,
   Menu21
 };
 //Funktio joka piirtää yhden rivin valikkoon
-void menu1line2(int row){
+void menu1rivi2(int row){
   lcd.setCursor(1,row);
-  lcd.print("Menu 1 Line 2 param: ");
+  lcd.print("Menu 1 rivi 2 ");
 }
 //struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenu1line2{
-  &menu1line2,
+menuElement mEmenu1rivi2{
+  &menu1rivi2,
   Menu22
 };
-
 //Funktio joka piirtää yhden rivin valikkoon
-void menu1line3(int row){
+void menu1rivi3(int row){
   lcd.setCursor(1,row);
-  lcd.print("Menu 1 Line 3 param: ");
+  lcd.print("Menu 1 rivi 3 ");
 }
 //struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenu1line3{
-  &menu1line3,
+menuElement mEmenu1rivi3{
+  &menu1rivi3,
   Menu23
 };
-/*
- * Menu23
- */
-//Valikko Menu23
-menuElement Menu23[]={
-  mEmenu23line1,
-  mEmenu23line2,
-  mEbackToMenu1,
-  mENULL
-};
 //Funktio joka piirtää yhden rivin valikkoon
-void menu23line1(int row){
+void menu1rivi4(int row){
   lcd.setCursor(1,row);
-  lcd.print("Menu 3 Line 1 param: ");
+  lcd.print("Menu 1 rivi 4 ");
 }
 //struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenu23line1{
-  &menu23line1,
-  //linkki puuttuu
-};
-//Funktio joka piirtää yhden rivin valikkoon
-void menu23line2(int row){
-  lcd.setCursor(1,row);
-  lcd.print("Menu 3 Line 2 param: ");
-}
-//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenu23line2{
-  &menu23line2,
-  //linkki puuttuu
-};
-//Funktio joka piirtää yhden rivin valikkoon
-void menu1line4(int row){
-  lcd.setCursor(1,row);
-  lcd.print("Menu 1 Line 4 param: ");
-}
-//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenu1line4{
-  &menu1line4,
+menuElement mEmenu1rivi4{
+  &menu1rivi4,
   Menu24
 };
-/*
- * Menu24
- */
-//Valikko Menu21
-menuElement Menu24[]={
-  mEmenu24line1,
-  mEmenu24line2,
-  mEbackToMenu1,
-  mENULL
-};
-
-//Funktio joka piirtää yhden rivin valikkoon
-void menu24line1(int row){
-  lcd.setCursor(1,row);
-  lcd.print("Menu 4 Line 1 param: ");
-}
-//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenu24line1{
-  &menu24line1,
-  // linkki puuttuu
-};
-
-
-//Funktio joka piirtää yhden rivin valikkoon
-void menu24line2(int row){
-  lcd.setCursor(1,row);
-  lcd.print("Menu 4 Line 2 param: ");
-}
-//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenu24line2{
-  &menu24line2,
-  //linkki puuttuu
-};
-
 /*
  * Menu21
  */
 //Valikko Menu21
 menuElement Menu21[]={
-  mEmenu21line1,
-  mEmenu21line2,
+  mEmenu21rivi1,
+  mEmenu21rivi2,
   mEbackToMenu1,
   mENULL
 };
 //Funktio joka piirtää yhden rivin valikkoon
-void menu21line1(int row){
+void menu21rivi1(int row){
   lcd.setCursor(1,row);
-  lcd.print("Menu 21 Line 1 param: ");
+  lcd.print("Menu 21 rivi 1 ");
 }
 //struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenu21line1{
-  &menu21line1,
+menuElement mEmenu21rivi1{
+  &menu21rivi1,
   MenuA0
 };
 //Valikko MenuA0
 menuElement MenuA0[]={
   mEmenuA0,
   mEbackToMenu21,
+  mEbackToMenu1,
   mENULL
 };
 //Funktio joka piirtää yhden rivin valikkoon
@@ -154,8 +90,6 @@ void menuA0(int row) {
           lcd.print("A0 ");
           lcd.setCursor(5,row);
           lcd.print(analogRead(A0));
-          lcd.setCursor(15,row);
-          lcd.write(byte(0));
 }
 //struct jossa tekstin luonti ja linkki seuraavaan valikkoon
 menuElement mEmenuA0{
@@ -166,6 +100,7 @@ menuElement mEmenuA0{
 menuElement MenuA1[]={
  mEmenuA1,
  mEbackToMenu21,
+ mEbackToMenu1,
  mENULL
 };
 //Funktio joka piirtää yhden rivin valikkoon          
@@ -175,8 +110,6 @@ void menuA1(int row){
           lcd.print("A1 ");
           lcd.setCursor(5,row);
           lcd.print(analogRead(A1));
-          lcd.setCursor(15,row);
-          lcd.write(byte(0));
 }
 //struct jossa tekstin luonti ja linkki seuraavaan valikkoon
 menuElement mEmenuA1{
@@ -187,6 +120,7 @@ menuElement mEmenuA1{
 menuElement MenuA2[]={
  mEmenuA2,
  mEbackToMenu21,
+ mEbackToMenu1,
  mENULL
 };
 //Funktio joka piirtää yhden rivin valikkoon
@@ -196,8 +130,6 @@ void menuA2(int row){
           lcd.print("A2 ");
           lcd.setCursor(5,row);
           lcd.print(analogRead(A2));
-          lcd.setCursor(15,row);
-          lcd.write(byte(0));   
 }
 //struct jossa tekstin luonti ja linkki seuraavaan valikkoon
 menuElement mEmenuA2{
@@ -208,6 +140,7 @@ menuElement mEmenuA2{
 menuElement MenuA3[]={
  mEmenuA3,
  mEbackToMenu21,
+ mEbackToMenu1,
  mENULL
 };
 //Funktio joka piirtää yhden rivin valikkoon           
@@ -217,8 +150,6 @@ void menuA3(int row){
           lcd.print("A3 ");
           lcd.setCursor(5,row);
           lcd.print(analogRead(A3));
-          lcd.setCursor(15,row);
-          lcd.write(byte(0));
   }
 //struct jossa tekstin luonti ja linkki seuraavaan valikkoon
 menuElement mEmenuA3{
@@ -226,20 +157,20 @@ menuElement mEmenuA3{
   MenuA0
 }; 
 //Funktio joka piirtää yhden rivin valikkoon
-void menu21line2(int row){
+void menu21rivi2(int row){
   lcd.setCursor(1,row);
-  lcd.print("Menu 21 Line 2 param: ");
-  Serial.println(row);
+  lcd.print("Menu 21 rivi 2 ");
 }
 //struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenu21line2{
-  &menu21line2,
+menuElement mEmenu21rivi2{
+  &menu21rivi2,
   MenubackLightOff
 };
 //Valikko MenubackLightOff
 menuElement MenubackLightOff[]={
   mEmenubackLightOff,
   mEbackToMenu21,
+  mEbackToMenu1,
   mENULL
 };
 //Funktio joka piirtää yhden rivin valikkoon
@@ -262,6 +193,7 @@ menuElement mEmenubackLightOff{
 menuElement MenubackLightOn[]={
  mEmenubackLightOn,
  mEbackToMenu21,
+ mEbackToMenu1,
  mENULL
 };
 //Funktio joka piirtää yhden rivin valikkoon
@@ -285,287 +217,207 @@ menuElement mEmenubackLightOn{
  */
 //Valikko Menu22
 menuElement Menu22[]={
-  mEmenu22line1,
-  mEmenu22line2,
+  mEmenu22rivi1,
+  mEmenu22rivi2,
   mEbackToMenu1,
   mENULL
 }; 
 //Funktio joka piirtää yhden rivin valikkoon
-void menu22line1(int row){
+void menu22rivi1(int row){
   lcd.setCursor(1,row);
-  lcd.print("Menu 22 Line 1 param: ");
+  lcd.print("Menu 22 rivi 1 ");
 }
 //struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenu22line1{
-  &menu22line1,
-  MenuDigital
+menuElement mEmenu22rivi1{
+  &menu22rivi1,
+  Menu22_1
 };
 /*
- * TODO menu jonka sisällä kaikki digital elementit
+ * Menu22_1
  */
-menuElement MenuDigital[]={
-  mEmenuD0Low,
+//Valikko Menu22_1
+menuElement Menu22_1[]={
+  mEmenu22_1,
+  mEbackToMenu22,
   mEbackToMenu1,
   mENULL
 };
-//Valikko MenuD0Low
-menuElement MenuD0Low[]={
-  mEmenuD0Low,
-  mEbackToMenu22,
-  mENULL
-};
-//Funktio joka piirtää yhden rivin valikkoon
-void menuD0Low(int row){
-          lcd.clear();
-          lcd.setCursor(1,row);
-          lcd.print("D0 ");
-          lcd.setCursor(10,row);
-          lcd.print(" LOW");
-          pinMode(D0,OUTPUT);
-          digitalWrite(D0, LOW);
-  }
-//struct jossa tekstin luonti ja linkki seuraavaan valikkoon  
-menuElement mEmenuD0Low{
-  &menuD0Low,
-  MenuD0High
-};
-//Valikko MenuD0High
-menuElement MenuD0High[]={
- mEmenuD0High,
- mEbackToMenu22,
- mENULL
-};
 //Funktio joka piirtää yhden rivin valikkoon  
-void menuD0High(int row){
+void menu22_1(int row){
           lcd.clear();
           lcd.setCursor(1,row);
-          lcd.print("D0 ");
-          lcd.setCursor(10,row);
-          lcd.print(" HIGH");
-          pinMode(D0,OUTPUT);
-          digitalWrite(D0, HIGH);
+          lcd.print("Esim_22_1 ");
   }
 //struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenuD0High{
-  &menuD0High,
-  MenuD0Low
-};
-//Valikko MenuD1Low
-menuElement MenuD1Low[]={
-  mEmenuD1Low,
-  mEbackToMenuDigital,
-  mENULL
+menuElement mEmenu22_1{
+  &menu22_1,
+  Menu22
 };  
-//Funktio joka piirtää yhden rivin valikkoon
-void menuD1Low(int row){
-          lcd.clear();
-          lcd.setCursor(1,row);
-          lcd.print("D1 ");
-          lcd.setCursor(10,row);
-          lcd.print(" LOW");
-          digitalWrite(D1, LOW);
-  }
-//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenuD1Low{
-  &menuD1Low,
-  MenuD1High
-};  
-//Valikko MenuD1High
-menuElement MenuD1High[]={
- mEmenuD1High,
- mEbackToMenuDigital,
- mENULL
-};
-//Funktio joka piirtää yhden rivin valikkoon  
-void menuD1High(int row){
-          lcd.clear();
-          lcd.setCursor(1,row);
-          lcd.print("D1 ");
-          lcd.setCursor(10,row);
-          lcd.print(" HIGH");
-          pinMode(D1,OUTPUT);
-          digitalWrite(D1, HIGH);
-  }  
-//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenuD1High{
-  &menuD1High,
-  MenuD1Low
-};
-//Valikko MenuD2Low
-menuElement MenuD2Low[]={
-  mEmenuD2Low,
-  mEbackToMenuDigital,
-  mENULL
-};  
-//Funktio joka piirtää yhden rivin valikkoon  
-  void menuD2Low(int row){
-          lcd.clear();
-          lcd.setCursor(1,row);
-          lcd.print("D2 ");
-          lcd.setCursor(10,row);
-          lcd.print(" LOW");
-          digitalWrite(D2, LOW);
-  }
-//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenuD2Low{
-  &menuD2Low,
-  MenuD2High
-};
-//Valikko MenuD2High
-menuElement MenuD2High[]={
- mEmenuD2High,
- mEbackToMenuDigital,
- mENULL
-};
-//Funktio joka piirtää yhden rivin valikkoon  
-void menuD2High(int row){
-          lcd.clear();
-          lcd.setCursor(1,row);
-          lcd.print("D2 ");
-          lcd.setCursor(10,row);
-          lcd.print(" HIGH");
-          pinMode(D2,OUTPUT);
-          digitalWrite(D2, HIGH);
-  }
-
-//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenuD2High{
-  &menuD2High,
-  MenuD2Low
-};
-//Valikko MenuD3Low
-menuElement MenuD3Low[]={
-  mEmenuD3Low,
-  mEbackToMenuDigital,
-  mENULL
-};
-//Funktio joka piirtää yhden rivin valikkoon  
-  void menuD3Low(int row){
-          lcd.clear();
-          lcd.setCursor(1,row);
-          lcd.print("D3 ");
-          lcd.setCursor(10,row);
-          lcd.print(" LOW");
-          digitalWrite(D3, LOW);
-  }
-//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenuD3Low{
-  &menuD3Low,
-  MenuD3High
-};
-//Valikko MenuD3High
-menuElement MenuD3High[]={
- mEmenuD3High,
- mEbackToMenuDigital,
- mENULL
-}; 
-//Funktio joka piirtää yhden rivin valikkoon  
-void menuD3High(int row){
-          lcd.clear();
-          lcd.setCursor(1,row);
-          lcd.print("D3 ");
-          lcd.setCursor(10,row);
-          lcd.print(" HIGH");
-          pinMode(D3,OUTPUT);
-          digitalWrite(D3, HIGH);
-  }      
-//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenuD3High{
-  &menuD3High,
-  MenuD3Low
-};
 
 //Funktio joka piirtää yhden rivin valikkoon
-void menu22line2(int row){
-  lcd.setCursor(1,1);
-  lcd.print("Menu 22 Line 2 param: ");
-}
-//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenu22line2{
-  &menu22line2,
-  MenuRitari1
-};
-//Valikko MenuRitari
-menuElement MenuRitari1[]={
-  mEmenuRitari1,
-  mEbackToMenu22,
-  mENULL
-};
-//Funktio joka piirtää yhden rivin valikkoon  
-void menuRitari1(int row){
-          lcd.clear();
-          lcd.setCursor(1,row);
-          lcd.print("RitariAssa ");
-          lcd.setCursor(12,row);
-          lcd.print(" OFF");
-  }
-//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenuRitari1{
-  &menuRitari1,
-  MenuRitari2
-};
-//Valikko MenuRitari2
-menuElement MenuRitari2[]={
-  mEmenuRitari2,
-  mEbackToMenu22,
-  mENULL
-};
-//Funktio joka piirtää yhden rivin valikkoon  TODO delay -> millis
-void menuRitari2(int row){
-  int VIIVE=70;
-          lcd.clear();
-          lcd.setCursor(1,row);
-          lcd.print("RitariAssa ");
-          lcd.setCursor(12,row);
-          lcd.print(" ON");
-for(int i=0; i<5; i++){
-          pinMode(D0,OUTPUT);
-          digitalWrite(D0, HIGH);
-          delay(VIIVE);
-          digitalWrite(D0, LOW);
-          pinMode(D1,OUTPUT);
-          digitalWrite(D1, HIGH);
-          delay(VIIVE);
-          digitalWrite(D1, LOW);
-          pinMode(D2,OUTPUT);
-          digitalWrite(D2, HIGH);
-          delay(VIIVE);
-          digitalWrite(D2, LOW);
-          pinMode(D3,OUTPUT);
-          digitalWrite(D3, HIGH);
-          delay(VIIVE);
-          digitalWrite(D3, LOW);
-          digitalWrite(D2,HIGH);
-          delay(VIIVE);
-          digitalWrite(D2, LOW);
-          digitalWrite(D1, HIGH);
-          delay(VIIVE);
-          digitalWrite(D1, LOW);
-          lcd.setCursor(1,row);
-          lcd.print("DELAY!!! ");
-}
-          MenuRitari1;
-}
-//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
-menuElement mEmenuRitari2{
-  &menuRitari2,
-  MenuRitari1
-};
-
-/*  
- *   paluu valikkoon MenuDigital
- */
- //Funktio joka piirtää yhden rivin valikkoon
-void backToMenuDigital(int row){
+void menu22rivi2(int row){
   lcd.setCursor(1,row);
-  lcd.print("Edellinen");
+  lcd.print("Menu 22 rivi 2 ");
 }
-//struct jossa tekstin luonti ja linkki edelliseen valikkoon 21
-menuElement mEbackToMenuDigital{
-  &backToMenuDigital,
-  MenuDigital
-  };
+//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
+menuElement mEmenu22rivi2{
+  &menu22rivi2,
+  Menu22_2
+};
+/*
+ * Menu22_2
+ */
+//Valikko Menu22_2
+menuElement Menu22_2[]={
+  mEmenu22_2,
+  mEbackToMenu22,
+  mEbackToMenu1,
+  mENULL
+};
+//Funktio joka piirtää yhden rivin valikkoon  
+void menu22_2(int row){
+          lcd.clear();
+          lcd.setCursor(1,row);
+          lcd.print("Esim_22_2 ");
+  }
+//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
+menuElement mEmenu22_2{
+  &menu22_2,
+  Menu22
+};  
+/*
+ * Menu23
+ */
+//Valikko Menu23
+menuElement Menu23[]={
+  mEmenu23rivi1,
+  mEmenu23rivi2,
+  mEbackToMenu1,
+  mENULL
+};
+//Funktio joka piirtää yhden rivin valikkoon
+void menu23rivi1(int row){
+  lcd.setCursor(1,row);
+  lcd.print("Menu 23 rivi 1 ");
+}
+//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
+menuElement mEmenu23rivi1{
+  &menu23rivi1,
+  Menu23_1
+};
+//Valikko Menu23_1
+menuElement Menu23_1[]={
+  mEmenu23_1,
+  mEbackToMenu23,
+  mEbackToMenu1,
+  mENULL
+};
+//Funktio joka piirtää yhden rivin valikkoon  
+void menu23_1(int row){
+          lcd.clear();
+          lcd.setCursor(1,row);
+          lcd.print("Esim_23_1 ");
+  }
+//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
+menuElement mEmenu23_1{
+  &menu23_1,
+  Menu23
+};  
+//Funktio joka piirtää yhden rivin valikkoon
+void menu23rivi2(int row){
+  lcd.setCursor(1,row);
+  lcd.print("Menu 23 rivi 2 ");
+}
 
+//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
+menuElement mEmenu23rivi2{
+  &menu23rivi2,
+  Menu23_2
+};
+//Valikko Menu23_2
+menuElement Menu23_2[]={
+  mEmenu23_2,
+  mEbackToMenu23,
+  mEbackToMenu1,
+  mENULL
+};
+//Funktio joka piirtää yhden rivin valikkoon  
+void menu23_2(int row){
+          lcd.clear();
+          lcd.setCursor(1,row);
+          lcd.print("Esim_23_2 ");
+  }
+//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
+menuElement mEmenu23_2{
+  &menu23_2,
+  Menu23
+};    
+/*
+ * Menu24
+ */
+//Valikko Menu24
+menuElement Menu24[]={
+  mEmenu24rivi1,
+  mEmenu24rivi2,
+  mEbackToMenu1,
+  mENULL
+};
+//Funktio joka piirtää yhden rivin valikkoon
+void menu24rivi1(int row){
+  lcd.setCursor(1,row);
+  lcd.print("Menu 24 rivi 1 ");
+}
+//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
+menuElement mEmenu24rivi1{
+  &menu24rivi1,
+  Menu24_1
+};
+//Valikko Menu24_1
+menuElement Menu24_1[]={
+  mEmenu24_1,
+  mEbackToMenu24,
+  mEbackToMenu1,
+  mENULL
+};
+//Funktio joka piirtää yhden rivin valikkoon  
+void menu24_1(int row){
+          lcd.clear();
+          lcd.setCursor(1,row);
+          lcd.print("Esim_24_1 ");
+  }
+//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
+menuElement mEmenu24_1{
+  &menu24_1,
+  Menu24
+};   
+//Funktio joka piirtää yhden rivin valikkoon
+void menu24rivi2(int row){
+  lcd.setCursor(1,row);
+  lcd.print("Menu 24 rivi 2 ");
+}
+//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
+menuElement mEmenu24rivi2{
+  &menu24rivi2,
+  Menu24_2
+};
+//Valikko Menu24_2
+menuElement Menu24_2[]={
+  mEmenu24_2,
+  mEbackToMenu24,
+  mEbackToMenu1,
+  mENULL
+};
+//Funktio joka piirtää yhden rivin valikkoon  
+void menu24_2(int row){
+          lcd.clear();
+          lcd.setCursor(1,row);
+          lcd.print("Esim_24_2 ");
+  }
+//struct jossa tekstin luonti ja linkki seuraavaan valikkoon
+menuElement mEmenu24_2{
+  &menu24_2,
+  Menu24
+}; 
 /*
  * paluu valikkoon Menu21
  */
@@ -574,7 +426,7 @@ void backToMenu21(int row){
   lcd.setCursor(1,row);
   lcd.print("Edellinen ");
 }
-//struct jossa tekstin luonti ja linkki edelliseen valikkoon 21
+//struct jossa tekstin luonti ja linkki ensimmäiseen valikkoon
 menuElement mEbackToMenu21{
   &backToMenu21,
   Menu21
@@ -586,11 +438,37 @@ menuElement mEbackToMenu21{
 void backToMenu22(int row){
   lcd.setCursor(1,row);
   lcd.print("Edellinen ");
-  }
-//struct jossa tekstin luonti ja linkki edelliseen valikkoon 22
+}
+//struct jossa tekstin luonti ja linkki ensimmäiseen valikkoon
 menuElement mEbackToMenu22{
   &backToMenu22,
   Menu22
+  };  
+/*
+ * paluu valikkoon Menu23
+ */
+//Funktio joka piirtää yhden rivin valikkoon
+void backToMenu23(int row){
+  lcd.setCursor(1,row);
+  lcd.print("Edellinen ");
+}
+//struct jossa tekstin luonti ja linkki ensimmäiseen valikkoon
+menuElement mEbackToMenu23{
+  &backToMenu23,
+  Menu23
+  };
+/*
+ * paluu valikkoon Menu24
+ */
+//Funktio joka piirtää yhden rivin valikkoon
+void backToMenu24(int row){
+  lcd.setCursor(1,row);
+  lcd.print("Edellinen ");
+}
+//struct jossa tekstin luonti ja linkki ensimmäiseen valikkoon
+menuElement mEbackToMenu24{
+  &backToMenu24,
+  Menu24
   };
 /*
  * paluu valikkoon Menu1
