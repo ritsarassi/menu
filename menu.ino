@@ -108,7 +108,7 @@ void menuControl(){
   if(menu[menuRow].t != NULL){ //jos ei ole tyhjä 
     menu[menuRow+0].mL(0); //ei kasvata arvoa riville 0
   }else{ // muutoin laskee arvoa
-    menuRow--; // jos halutaan pyörähtämään ympäri, vaihdetaan kasvattamaan arvoa
+    menuRow--; 
   }
   if(menu[menuRow+1].t != NULL){ //jos seuraava rivi ei ole tyhjä,
     menu[menuRow+1].mL(1); // kasvattaa rivien arvoa ja piirtää seuraavaan
