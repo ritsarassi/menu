@@ -60,7 +60,7 @@ byte leftArrow[8] = { // kursori vasen
 };
 
 int menuRow = 0; // valikkorivimuuttuja
-menuElement *menu=Menu1; 
+menuElement *menu=Menu1;
 
 void setup(){
   pinMode(LCDLight, OUTPUT); // asettaa pinnin LCDLight output
@@ -70,6 +70,7 @@ void setup(){
   lcd.createChar(1, downArrow); // Luo merkin paikalle 1, nuoli alas
   lcd.createChar(2, upArrow); // Luo merkin paikalle 2, nuoli ylös
   lcd.createChar(3, leftArrow); // Luo merkin paikalle 3, nuoli vasemmalle
+  intro();
   // piirtää ensimmäisen valikon
   menu[menuRow+0].mL(0);
   menu[menuRow+1].mL(1);
@@ -108,7 +109,7 @@ void menuControl(){
   if(menu[menuRow].t != NULL){ //jos ei ole tyhjä 
     menu[menuRow+0].mL(0); //ei kasvata arvoa riville 0
   }else{ // muutoin laskee arvoa
-    menuRow--; 
+    menuRow--; // 
   }
   if(menu[menuRow+1].t != NULL){ //jos seuraava rivi ei ole tyhjä,
     menu[menuRow+1].mL(1); // kasvattaa rivien arvoa ja piirtää seuraavaan
@@ -120,7 +121,7 @@ void menuControl(){
   break;
   case 5: // TODO tarvittaessa, painiketta S3 painettu pitkään tapahtuu jotain hienoa 
   break;
-  case 6: // jos valintapainiketta painettu pitkään, palaa ensimmäiseen valikkoon
+  case 6: // jos valintapainiketta painettu pitkään, palaa ensimmäiseen valikkoon 
   lcd.clear(); // pyyhkii näytön
   menu=Menu1; // asettaa menun vastaamaan Menu1:sta
   menuRow=0; //nollaa rivit
@@ -128,7 +129,7 @@ void menuControl(){
   menu[menuRow+0].mL(0);
   menu[menuRow+1].mL(1);
   break;
-} 
+}
 drawCursor(); //piirtää kursorin
 }
 /*
@@ -161,4 +162,12 @@ void drawCursor() {
         lcd.setCursor(0,1);
         lcd.write(byte(2)); // piirtää nuolen ylös
       }
+}
+void intro() {
+lcd.setCursor(4,0);
+lcd.print("Valikko");
+lcd.setCursor(3,1);
+lcd.print("Marko 2018");
+delay(3500);
+lcd.clear();
 }
