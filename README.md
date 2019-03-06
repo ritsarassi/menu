@@ -1,5 +1,8 @@
 # menu 
 
+Koulun sulautetut sovellukset-työ,
+
+Arduino.
 
 Toiminta: 
 
