@@ -1,8 +1,7 @@
 # menu 
+Sulautetut sovellukset ja projektityöt, Careeria 2018
 
-Koulun sulautetut sovellukset-työ,
-
-Arduino.
+#Arduino.
 
 
 
